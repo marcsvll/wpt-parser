@@ -24,3 +24,20 @@ class Fetch():
         json_data = requests.get(url, headers = self.headers)
         json_data = json_data.json()
         return json_data
+
+    def json_from_file(self, file_path: str) -> dict:
+        """Reads JSON format result for a WPT test from a file
+
+        Keyword Arguments:
+            file_path {str} -- path to the JSON file
+
+        Returns:
+            dict -- json response of the WPT test
+        """
+        try:
+            with open(file_path, 'r') as file:
+                json_data = json_load(file)
+            return json_data
+        except Exception as ex:
+            print(f"An error occurred while reading the file: {ex}")
+            return {}
