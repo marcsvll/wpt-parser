@@ -1,5 +1,5 @@
 import requests
-
+import json
 from WPTParser import WPTParser
 
 class Fetch():
@@ -10,7 +10,7 @@ class Fetch():
         }
         self.headers.update(headers)
 
-    def json(self, test_id: str='200518_Y2_c736f1cb25d54ac8cd93ebdfdcf6375b', WPT_URI: str = None) -> dict:
+    def json(self, test_id: str='241004_AiDcW0_A9N', WPT_URI: str = None) -> dict:
         """Fetches the JSON format result for a WPT test
 
         Keyword Arguments:
@@ -36,7 +36,7 @@ class Fetch():
         """
         try:
             with open(file_path, 'r') as file:
-                json_data = json_load(file)
+                json_data = json.load(file)
             return json_data
         except Exception as ex:
             print(f"An error occurred while reading the file: {ex}")
